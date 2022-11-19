@@ -1,0 +1,36 @@
+WHAT IS THE APP ABOUT?
+The study buddy app is an AI-assisted study app that helps students or persons alike to generate useful summaries - as well as question and answer pairs - from lecture notes(in pdf format). 
+It displays these summaries as flashcards.
+
+
+GETTING STARTED WITH THE APP
+
+**** UPLOADING FILES: 
+* The app only accepts files with .pdf extension with a maximum uploadable size of 100mb. If your file size exceeds this limit, you can click here to compress the file size or here to split the pdf. 
+
+
+* The Study Buddy app is designed to handle structured text,entries such as Tables,Images,Calculations or much numbers may not be extracted and rendered properly.
+
+* Page numbering in the studybuddy app starts from page number 1(one).The first page in a text is considered to be page number 1. For a pdf containing pages for preface,table of contents,
+acknowledgement and other information considered not useful for extraction, the number of these pages should be added to the first page to be extracted. for instance, to extract and 
+summarize texts in page 15-20 of a pdf containing intoductory pages with roman numerals i-vii (i.e 7 introductory pages), add up the total number of introductory pages to the pages to extract,
+i.e (7+15)-(20+7)= 22-27. Therefore 22-27 should be specified in the Pages to extract.
+
+*For faster generation and improved model performance, the user is allowed to summarize a maximum of 10 pages at an instance
+
+* PAGES TO INCLUDE / EXCLUDE: Due to this, the user is given an option to either enter the Pages to Include or Pages to Exclude. For example, if I have a PDF of 100 pages, I can summarize in batches of 10, i.e Pages 1-10, 11-20, 21-30 and so on. 
+When summarizing the first 10 pages, there are two ways it can be done:
+i. Fill in "1-10" in the space for "Pages to include", or
+ii. Fill in "11-100" in the space for "Pages to exclude"
+
+Keep in mind that you are allowed to select either "Pages to Include" or "Pages to exclude", you cannot select both. Also, for the two options, you can either pass a list of pages (e.g '1,2,3,4,5,6'), a range of pages (e.g '1-6') or a list of ranges(e.g '1-3', '4-6')
+
+A very important thing to also take note of is that the app starts counting from the first page of the document (i.e The fist page is page 1, the second page is page 2 and so on) irrespective of whatever numeration system is used in the file. For example, in some books, preliminary pages are numbered in roman numerals (i,ii,...) while the main text is numbered 1,2,3,... . 
+In a case like this, Page i is seen as page 1 in the app. Also page ii is seen as page 2 and so on.
+
+So if I have a book numbered i,ii,1,2,3,...,20 (where i and ii contains the table of contents) and I want to summarize the first 10 pages of the main text, I can either:
+
+i. Fill in "3-12" as "Pages to include" or
+ii. Fill in "1-2", "13-20" as "Pages to Exclude"
+
+NOTE: It is HIGHLY advised to exclude pages that have irrelevant information for summary. Pages that contain 'Table of contents', 'Acknowledgement', 'Preface', 'Appendix' and so on are examples of pages that should be excluded 

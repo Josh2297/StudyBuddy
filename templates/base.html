@@ -1,0 +1,140 @@
+<!Doctype html>
+<html class="h-100">
+    {% load static %}
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1,shrink-to-fit=no">
+        <meta name="description" content="A Text Summarizer using Natural Language Processing">
+        <meta name="keywords" content="text-summarize,text,summarize,summary,AI,NLP">
+        <meta name="author" content="Okamkpa Tobechukwu,Mbachu Divine,Okechukwu Joshua Ifeanyi">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+        {% block adhead %}{% endblock %}
+
+
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+
+        {% block customjavascript %} <script type="text/javascript" src="{% static 'java_main.js' %}"></script> {% endblock %}
+
+        <link href="{% static 'main.css' %}" rel="stylesheet">
+
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+
+        <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+
+        <title>{% block title %} StudyBuddy {% endblock %}</title>
+        <link rel="shortcut icon" href="{% static 'study.ico' %}" type="image/x-icon">
+    </head>
+    <body>
+        <header class="mt-0 sticky-top">
+            <nav class="navbar navbar-expand-md bg-light my-0 py-0">
+                <div class="container-fluid my-0 py-0">
+                    <div class="d-flex me-auto my-0 py-0 flex-row">
+                        <img class="rounded-pill image-fluid" width="80" height="80" src="{% static 'study_buddy.png' %}">
+                        <a href="{% url 'generate_summary_view' %}" class="navbar-brand my-auto ms-md-2 ms-1"><h5 class="large solid-text dimgrey">StudyBuddy</h5></a>
+                    </div>
+                        <button class="btn btn-sm navbar-light navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarcontent" aria-controls="navbarcontent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                            </button>
+                        <div class="collapse navbar-collapse" id="navbarcontent">
+                        <div class="navbar-nav ms-auto" id="navdrop">
+                            <a href="{% url 'generate_summary_view' %}" class="text-decoration-none nav-item nav-link ms-auto text-dark active">Home</a>
+                            <a href="{% url 'generate_summary_view' %}" class="text-decoration-none nav-item nav-link ms-auto text-dark active">Summarize-Text</a>
+                            <a href="{% url 'generate_qa' %}" class="text-decoration-none nav-item nav-link ms-auto text-dark">Questions and Answers</a>
+                            <a href="{% url 'study_help' %}" class="text-decoration-none nav-item nav-link ms-auto text-dark">How to</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main>
+            {% block maincontents %}
+            <div class="container-fluid pt-4 top-text" style="background-color:cornsilk;background-image:url({% static 'style.jpg' %});">
+                <div class="container">
+                <div class="top-text mb-5">
+                    <p class="text-light bold text-center" style="font-family:fantasy;font-style:italic;">Leveraging the power of Artificial Intelligence (AI) and Natural Language Porcessing (NLP) to bring solutions.
+                    These capabilities are provided by the Cohere NLP API Endpoints solutions.</p>
+                </div>
+                <h2 class="text-center bold my-5" style="color:khaki;font-family:Verdana, Geneva, Tahoma, sans-serif;text-decoration:double;font-weight:bolder">Study Made Easy</h2>
+            <div class="my-3 mb-2" >
+                <div class="light py-5 px-lg-3 px-1" style="border-radius:4px">
+                <h5 class="text-white bold"><span class="badge rounded-pill bg-danger">What can i do?  </span></h5>
+                {% block contents %}
+            {% endblock %}
+            </div>
+            </div>
+            </div>
+            </div>
+            {% endblock %}
+            {% block options %}<div class="container-fluid py-5" style="background:rgba(84, 103, 150, 0.1);">
+            <div class="container">
+                <div class="row mt-5 pt-3">
+                    {% block cando %}<h3 class="text-dark bold text-center" style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">What You Can Do...</h3>{% endblock %}
+                   <div class="col-lg-4 col-12">
+                        <div class="d-flex flex-column px-1 pt-3 bg-light" style="border-radius:10px;background-color:white">
+                            <h5>Summarize Text</h5><hr class="my-0" />
+                            <div class="card w-100">
+                                <div class="card-img-top"><img src="{% static 'books.jpg' %}" class="image-fluid w-100 rounded thumbnail" ></div>
+                                <div class="card-body"> 
+                                <p style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Generate Lecture Notes,Text Materials to aid in learning and teaching. Upload A material in PDF format and let our AI Model Generate
+                                Relevant Summary from the text. Generated Text can be read or downloaded as in PDF format<br/><hr/>
+                            <a href="{% url 'generate_summary_view' %}" class="bold ms-auto text-decoration-none" style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Summarize Text  &#x2192;</a>
+                                </div>
+                            </div>
+                    </div>
+                    </div>
+            <div class="col-lg-4 col-12 mt-lg-0 mt-4 ms-auto">
+                <div class="d-flex flex-column px-1 pt-3 bg-light h-100" style="border-radius:10px;background-color:white">
+                    <h5>Questions & Answers</h5><hr class="my-0" />
+                    <div class="card h-100 w-100">
+                        <div class="card-img-top"><img src="{% static 'books_hand.jpg' %}" class="image-fluid w-100 rounded thumbnail" ></div>
+                        <div class="card-body"> 
+                        <p style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Quickly Generate Questions and their Answers to aid in learning and teaching. Upload A material in PDF format and let our AI Model Generate
+                        Relevant Questions and Answers from the text.<br/><br/>
+                        <hr/>
+                        <a href="{% url 'generate_qa' %}" class="bold ms-auto text-decoration-none mt-auto" style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Get Q&A   &#x2192;</a>
+                        </div>
+                    </div>
+            </div>
+            </div>
+                </div>
+            </div>
+         </div>
+         {% endblock %}
+        </main>
+        <footer class="mt-5" style="color:white;background-color:black">
+            <hr class="my-0 pt-0 pb-0" />
+            <div class="container">
+            <div class="d-flex flex-column px-lg-2 px-1 mb-3">
+            <div class="row">
+                <div class="col-lg-4 col-6 py-3">
+                    <p class="bold">Contributors</p>
+                    <p><a href="https://github.com/josh2297" class="text-decoration-none text-light">Okechukwu Joshua</a></p>
+                    <p><a href="https://github.com/josh2297" class="text-decoration-none text-light">Okamkpa Tobechukwu</a></p>
+                    <p><a href="https://github.com/josh2297" class="text-decoration-none text-light">Mbachu Divine</a></p>
+                </div>
+                <div class="col-lg-4 col-6 py-3 ms-auto">
+                    <br/><br/>
+                    <p><a href="https://github.com/josh2297" class="text-decoration-none bold text-light">Project Repository</a></p>
+                    <p><a href="{% url 'study_help' %}" class="text-decoration-none bold text-light">Help</a></p>
+                    <p><a href="https://github.com/josh229" class="text-decoration-none bold text-light">Contact Us</a></p>
+                </div>
+            </div>
+            </div>
+            </div>
+        </footer>
+        <!--Bootstrap Javascript Activation Code-->
+        <script >
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+          })
+            </script>
+    </body>
+</html>

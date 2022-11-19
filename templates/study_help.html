@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block adhead %}
+<style>
+    a {text-decoration:none}
+</style>
+{% endblock %}
+{% block maincontents %}
+<div class="container">
+<h4 class="text-center mt-lg-5 mt-2 text-primary">STUDYBUDDY APP?</h4>
+<hr/>
+<ul style="list-style-type:disc">
+
+<p class="bold">The study buddy app is an AI-assisted study app that helps students or persons alike to generate useful summaries - as well as question and answer pairs - from lecture notes(in pdf format). 
+It displays these summaries as flashcards.</p><br/>
+<h6 class="text-success">GETTING STARTED WITH THE APP</h6>
+<br/>
+<li><p class="bold text-info">UPLOADING FILES: </p>
+<ul style="list-style-type:circle">
+<li><p>The app only accepts files with .pdf extension with a maximum uploadable size of 100mb. If your file size exceeds this limit, you can <a href="https://smallpdf.com/compress-pdf" target="_blank ">click here</a>
+ to compress the file size or <a href="https://smallpdf.com/split-pdf" target="_blank">here</a> to split the pdf.</p></li>
+
+
+<li><p>The Study Buddy app is designed to handle structured text,entries such as tables,images,calculations or much numbers may not be extracted and rendered properly.</p></li>
+
+<li><p>Page numbering in the studybuddy app starts from page number 1(one).The first page in a text is considered to be page number 1.</p>
+<p> For a pdf containing pages for preface,table of contents,acknowledgement and other information considered not useful for extraction, the number of these pages should be added to the first page to be extracted. for instance, to extract and 
+summarize texts in page 15-20 of a pdf containing intoductory pages with roman numerals i-vii (i.e 7 introductory pages), add up the total number of introductory pages to the pages to extract,
+i.e (7+15)-(20+7)= 22-27.</p>
+<p>Therefore 22-27 should be specified in the Pages to extract.</p></li>
+
+<li><h6 class="text-danger">For faster generation and improved model performance, the user is allowed to summarize a maximum of 10 pages at an instance.</h6></li>
+</li>
+</ul>
+
+<li><h6 class="text-info">PAGES TO INCLUDE / EXCLUDE:</h6>
+    <ul style="list-style-type:square">
+<li><p>The user is given an option to either enter the Pages to Include or Pages to Exclude. Say for a PDF of 100 pages, One can summarize in batches of 10, i.e Pages 1-10, 11-20, 21-30 and so on. 
+When summarizing the first 10 pages, there are two ways it can be done:</p>
+<ul style="list-style-type:circle">
+<li><p>i. Fill in "1-10" in the space for "Pages to include", or</p></li>
+<li><p>ii. Fill in "11-100" in the space for "Pages to exclude"</p></li>
+</ul></li>
+<li><p>Keep in mind that you are allowed to select either "Pages to Include" or "Pages to exclude" if the Number of pages in the text is greater than 10.</p></li>
+<li><p class="text-danger">You can either pass a list of pages (e.g '1,2,3,4,5,6'),a range of pages (e.g '1-6'),a list of ranges(e.g '1-3', '4-6') or a Combination of all e,g (1,2,8-11,16,17)</p></li>
+
+For a book numbered i,ii,1,2,3,...,20 (where i and ii contains the table of contents) and I want to summarize the first 10 pages of the main text, One can either:
+
+i. Fill in "3-12" as "Pages to include in summary" or
+ii. Fill in "1-2", "13-20" as "Pages to Exclude from summary"
+<p>To summarize a whole pdf, such material must have pages less than 10 else the page to omit from summary or page to summarize should be specified.</p>
+<p> For any Improper use of the App appropriate error information will be displayed and process request terminated or abandoned. </p>
+</li>
+<li>
+    <br/>
+    <p>If you encounter and unexpected error(s),bugs or potential fixes in the course of using this app, You can contact us by 
+    <a href="https://joshua.okechukwu.247915@unn.edu.ng">clicking here </a>,with an email subject "Study Buddy"</p>
+</li>
+</ul>
+</div>
+{% endblock %}
+{% block options %}{% endblock %}

@@ -1,0 +1,17 @@
+.large {font-size:120%}
+.larger {font-size:150%}
+.double-size {font-size:200%}
+.dimgrey {color:dimgrey}
+.solid-text {text-decoration:solid}
+.bold {font-weight:bold}
+.text-big {text-decoration:solid;font-weight:bolder}
+.top-text {border-radius:4px;background-position:center;background-repeat:no-repeat;background-attachment:fixed;background-size:cover}
+.light {background: rgba(123,175,.4,0.5)}
+
+@media (min-width:910px){
+     #formportion {width:50%;}
+}
+
+@media (min-width:768px) and (max-width:909px) {
+    #formportion {width:75%;}
+}
