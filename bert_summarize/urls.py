@@ -13,20 +13,34 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from summary import views
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
 import sys
-sys.path.insert(0,'/home/josh2297/project/bert_summarize')
-from summary import views
+sys.path.insert(0, '/home/josh2297/project/bert_summarize')
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('user/',include('User.urls')),
-    path('summary/',include('summary.urls')),
-    path('',views.GenerateSummaryView.as_view(),name="home_summary_view"),
-    path('qa/',include('qa.urls')),
-    path('how_to',TemplateView.as_view(template_name="study_help.html"),name="study_help")
-]
+    path(
+        'admin/',
+        admin.site.urls),
+    path(
+        'user/',
+        include('User.urls')),
+    path(
+        'summary/',
+        include('summary.urls')),
+    path(
+        '',
+        views.GenerateSummaryView.as_view(),
+        name="home_summary_view"),
+    path(
+        'qa/',
+        include('qa.urls')),
+    path(
+        'how_to',
+        TemplateView.as_view(
+            template_name="study_help.html"),
+        name="study_help")]

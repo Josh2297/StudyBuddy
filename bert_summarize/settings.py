@@ -27,7 +27,7 @@ if 'SECRET_KEY' in os.environ:
     SECRET_KEY = os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG =eval(os.environ.get('DEBUG')) or False
+DEBUG = eval(os.environ.get('DEBUG')) or False
 
 ALLOWED_HOSTS = ['*']
 
@@ -47,18 +47,17 @@ INSTALLED_APPS = [
     'User',
 ]
 
-AUTH_USER_MODEL='User.CustomUser'
+AUTH_USER_MODEL = 'User.CustomUser'
 
 MIDDLEWARE = ['django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware']
+              'django.contrib.sessions.middleware.SessionMiddleware',
+              'django.middleware.common.CommonMiddleware',
+              'django.middleware.csrf.CsrfViewMiddleware',
+              'django.contrib.auth.middleware.AuthenticationMiddleware',
+              'django.contrib.messages.middleware.MessageMiddleware',
+              'django.middleware.clickjacking.XFrameOptionsMiddleware']
 if IS_HEROKU:
     MIDDLEWARE.append('whitenoise.middleware.WhiteNoiseMiddleware')
-
 
 
 ROOT_URLCONF = 'bert_summarize.urls'
@@ -66,7 +65,7 @@ ROOT_URLCONF = 'bert_summarize.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -89,7 +88,7 @@ MAX_CONN_AGE = 600
 
 DATABASES = {
     'default': {
-        'ENGINE':'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
@@ -136,9 +135,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-STATICFILES_DIRS=[os.path.join(BASE_DIR,'static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 
 # Default primary key field type

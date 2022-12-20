@@ -8,47 +8,46 @@ load_dotenv()
 nltk.download('punkt')
 
 
-API_TOKEN=os.environ.get("SUMMARY_API_TOKEN")
+API_TOKEN = os.environ.get("SUMMARY_API_TOKEN")
 headers = {"Authorization": f"Bearer {API_TOKEN}"}
+
 
 def handle_page(text):
     return text
 
+
 class Summary:
 
-    def __init__(self,pdf_file_path,pages=None):
-        self.pdf_file_path=pdf_file_path
+    def __init__(self, pdf_file_path, pages=None):
+        self.pdf_file_path = pdf_file_path
         if pages:
-            self.pages=pages
+            self.pages = pages
         else:
-            self.pages=[]
+            self.pages = []
 
     def text_extractor(self):
-
-        page_extract_list = []
-
 
         with pdfplumber.open(self.pdf_file_path) as pdf:
             if self.pages:
                 self.pages = [int(i) for i in self.pages]
-                for i in self.pages:
+                page_extract_list = [0] * len(self.pages)
+                for p, i in enumerate(self.pages):
                     page = pdf.pages[i]
-                    page_extract_list.append(page.extract_text())
+                    page_extract_list[p] = page.extract_text()
             else:
-                self.pages=pdf.pages
-                for page in self.pages:
-                    page_extract_list.append(page.extract_text())
-
+                self.pages = pdf.pages
+                page_extract_list = [0] * len(self.pages)
+                for i, page in enumerate(self.pages):
+                    page_extract_list[i] = page.extract_text()
 
         page_extract_list = " ".join(page_extract_list)
 
         tokens = nltk.sent_tokenize(page_extract_list)
-        
 
         new_set = []
         empty = []
         for i in range(len(tokens)):
-            if (i+1)%6 == 0:
+            if (i + 1) % 6 == 0:
                 new_set.append(str_empty)
                 str_empty = ""
                 empty = []
@@ -61,19 +60,21 @@ class Summary:
 
         return new_set
 
-
-    def _query(self,payload):
-        response = requests.post(os.environ.get("SUMMARY_API_URL"), headers=headers, json=payload)
+    def _query(self, payload):
+        response = requests.post(
+            os.environ.get("SUMMARY_API_URL"),
+            headers=headers,
+            json=payload)
         return response.json()
 
-
     def summarize(self):
-        text=self.text_extractor()
-        new_tuple=[];n=0
+        text = self.text_extractor()
+        new_tuple = []
+        n = 0
         for i in text:
-            n+=1
-            output=self._query({"inputs": i})
-            summary=output[0]['summary_text']
-            new_tuple.append(unicodedata.normalize('NFKD',summary))
-    
+            n += 1
+            output = self._query({"inputs": i})
+            summary = output[0]['summary_text']
+            new_tuple.append(unicodedata.normalize('NFKD', summary))
+
         return new_tuple
