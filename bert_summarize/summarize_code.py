@@ -36,7 +36,7 @@ class Summary:
         else:
             self.pages = []
 
-    def text_extractor(self):
+    def text_extractor(self) -> list:
         """
         Extract text from pdf file.
 
@@ -84,7 +84,7 @@ class Summary:
             json=payload)
         return response.json()
 
-    def summarize(self):
+    def summarize(self) -> list:
         """
         Summarize extracted text.
 
