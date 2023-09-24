@@ -18,12 +18,12 @@ def handle_page(text):
 
 class Summary:
     """ 
-    Extract and summarize extracted text.
+    Extract and summarize the extracted text.
      
     parameters:
     ---------- 
     pdf_file_path: str
-            Full path to pdf file, can be constructed from os.path
+            Full path to pdf file can be constructed from os.path
             
     pages: list, optional
             Number of pages to extract.
