@@ -17,8 +17,19 @@ def handle_page(text):
 
 
 class Summary:
+    """ 
+    Extract and summarize extracted text.
+     
+    parameters:
+    ---------- 
+    pdf_file_path: str
+            Full path to pdf file, can be constructed from os.path
+            
+    pages: list, optional
+            Number of pages to extract.
+    """
 
-    def __init__(self, pdf_file_path, pages=None):
+    def __init__(self, pdf_file_path: str, pages: list = None) -> None:
         self.pdf_file_path = pdf_file_path
         if pages:
             self.pages = pages
@@ -26,7 +37,13 @@ class Summary:
             self.pages = []
 
     def text_extractor(self):
+        """
+        Extract text from pdf file.
 
+        returns:
+        --------
+        list
+        """
         with pdfplumber.open(self.pdf_file_path) as pdf:
             if self.pages:
                 self.pages = [int(i) for i in self.pages]
@@ -68,6 +85,13 @@ class Summary:
         return response.json()
 
     def summarize(self):
+        """
+        Summarize extracted text.
+
+        returns:
+        --------
+        list
+        """
         text = self.text_extractor()
         new_tuple = []
         n = 0
